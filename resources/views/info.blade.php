@@ -34,7 +34,10 @@
                             <input type="hidden" id="id" value="{{($datos->informacion)?$datos->informacion->id:''}}">
                             <div class="card">
                                 <div class="card-header text-center text-white bg-info">
-                                    <h5 class="card-title">Información del Responsable</h5>
+                                    <h5 class="card-title">
+                                        Información del Responsable
+                                        <a href="logout" class="close" aria-label="Close><span aria-hidden="true">&times;</span></a>
+                                    </h5>
                                 </div>    
                                 <div class="card-body border-info text-info">
                                     <div class="form-group">
