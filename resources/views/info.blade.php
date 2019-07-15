@@ -20,6 +20,11 @@
                     <div class="col-3">
                         <img src="{{asset('images/LOGOS-01.jpg')}}" class="img-fluid" alt="Responsive image">
                     </div>
+                    <div class="col-6">
+                    </div>
+                    <div class="col-3">
+                        <img src="{{asset('images/LOGOS-03.jpg')}}" class="img-fluid" alt="Responsive image">
+                    </div>
                 </div>
                 <hr>
                 <div class="row">
