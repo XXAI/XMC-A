@@ -62,7 +62,14 @@
                                     </div>
                                 </div>
                                 <div class="card-footer text-white bg-light">
-                                    <button class="btn btn-primary btn-block" type="button" onclick="enviarFormulario()"><i class="fas fa-save"></i> Guardar</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button id="btn-guardar" class="btn btn-primary btn-block" type="button" onclick="enviarFormulario()"><i class="fas fa-save"></i> Guardar</button>
+                                        </div>
+                                        <div class="col-6" id="btn-continuar">
+                                            <a href="http://saludchiapas.gob.mx" class="btn btn-secondary btn-block">Continuar</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>

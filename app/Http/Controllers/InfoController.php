@@ -6,16 +6,30 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-
+use Carbon\carbon;
 use \Validator, \Redirect;
-use App\Models\Informacion;
+use App\Models\Informacion, App\Models\LoginLog;
 
 class InfoController extends Controller
 {
-    public function showInfo(){
+    public function showInfo(Request $request){
         $usuario = Auth::user();
-        $usuario->load('loginLog','informacion');
-        return view('info',['datos'=>$usuario]);
+
+        $log = LoginLog::where('user_id',$usuario->id)->whereDate('fecha_login', Carbon::today())->first();
+
+        if(!$log){
+            $log = [
+                    'user_id'=>$usuario->id,
+                    'clues'=>$usuario->clues,
+                    'ip'=>$request->ip()
+                ];
+            LoginLog::create($log);
+
+            $usuario->load('informacion');
+            return view('info',['datos'=>$usuario]);
+        }else{
+            return Redirect::to('http://saludchiapas.gob.mx');
+        }
     }
 
     public function saveInfo(Request $request){

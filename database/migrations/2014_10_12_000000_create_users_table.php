@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('clues')->nullable();
             $table->string('password');
+            $table->string('name')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

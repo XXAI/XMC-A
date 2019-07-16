@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Input;
 use \Validator, \Auth, \Redirect;
 use Request;
+use Carbon\Carbon;
 use App\Models\LoginLog;
 
 class LoginController extends Controller
@@ -71,14 +72,19 @@ class LoginController extends Controller
                 if (Auth::attempt($userdata)) {
                     $usuario = Auth::user();
 
-                    $log = [
-                        'user_id'=>$usuario->id,
-                        'clues'=>$usuario->clues,
-                        'ip'=>Request::ip()
-                    ];
-
-                    LoginLog::create($log);
+                    //$log = LoginLog::where('user_id',$usuario->id)->whereDate('fecha_login', Carbon::today())->first();
+                    
+                    //if(!$log){
+                    //    $log = [
+                    //        'user_id'=>$usuario->id,
+                    //        'clues'=>$usuario->clues,
+                    //        'ip'=>Request::ip()
+                    //    ];
+                    //    LoginLog::create($log);
                     return Redirect::to('info');
+                    //}else{
+                    //    return Redirect::to('http://saludchiapas.gob.mx');
+                    //}
                 } else {
                     return Redirect::to('login')
                         ->withErrors($validator) // send back all errors to the login form

@@ -7,9 +7,8 @@ function enviarFormulario(){
             console.log(data);
             if(data.validacion){
                 $('#id').val(data.datos.id);
-                //$('.captura-formulario').hide();
-                //$('.guardado-correcto').show();
-                //$('#formulario-completo').addClass('text-white bg-success');
+                $('#btn-guardar').html('<i class="fas fa-save"></i> Actualizar');
+                $('#btn-continuar').show();
             }else{
                 for(var i in data.errores){
                     var errores = data.errores[i].join('<br>');
@@ -42,6 +41,15 @@ function limpiarErroresFormulario(){
 function limpiarFormulario(){
     $('#form-info').trigger('reset');
     limpiarErroresFormulario();
+}
+
+window.onload = function () { 
+    if($('#id').val()){
+        $('#btn-guardar').html('<i class="fas fa-save"></i> Actualizar');
+        $('#btn-continuar').show();
+    }else{
+        $('#btn-continuar').hide();
+    }
 }
 
 //Agregamos shortcuts para put y delete en las llamadas ajax de jquery
